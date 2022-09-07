@@ -1,0 +1,65 @@
+<html>
+
+<head>
+<title>Firebase Test</title>    
+
+
+</head>
+
+
+<body>
+
+
+    <h5>Firebase Test</h5>
+
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.9.0/firebase-database.min.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyC-6oxr_rF7BJUBGtbw_iOaDXF4PaU83Ms",
+            authDomain: "for-firebase-project.firebaseapp.com",
+            databaseURL: "https://for-firebase-project-default-rtdb.firebaseio.com",
+            projectId: "for-firebase-project",
+            storageBucket: "for-firebase-project.appspot.com",
+            messagingSenderId: "44986171950",
+            appId: "1:44986171950:web:3daa67e560f994bd7b15bf",
+            measurementId: "G-4FRFGXSEPG"
+            };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.database();
+
+        // tt可視為一個路徑
+        const tt = db.ref('messages');
+
+        // real-time read
+         tt.on('value',(snapshot) =>{
+             console.log(snapshot.val());
+         });
+
+         // write
+         const key = tt.push().key;
+         console.log(key);
+
+         tt.child(key).set({
+            'message': 'send to page'
+         } )
+
+
+         
+
+
+
+        //console.log(tt)
+
+    </script>
+
+
+      
+    
+
+
+</body>
+
+</html>
